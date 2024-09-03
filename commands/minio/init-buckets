@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ## Description: Initializes buckets for drupal
 ## Usage: init-buckets
+#ddev-generated
 
 bucket=minio/flysystem
 
