@@ -11,10 +11,9 @@ project_files:
 post_install_actions:
   - |
     if ! grep 'ddev init-buckets' commands/host/full-install; then
-      sed -i'' '/ddev start/a ddev init-buckets' commands/host/full-install 
-      rm commands/host/full-install.bak
+      sed -i '/ddev start/a ddev init-buckets' commands/host/full-install 
     fi
 removal_actions:
   - |
-    sed -ni'' '/ddev init-buckets/!p' commands/host/full-install
+    sed -ni '/ddev init-buckets/!p' commands/host/full-install
     rm commands/host/full-install.bak
