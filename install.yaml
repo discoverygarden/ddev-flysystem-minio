@@ -5,7 +5,7 @@ dependencies:
 
 project_files:
   - commands/minio/init-buckets
-  - minio-flysystem/flystem_config.json
+  - minio-flysystem/flysystem_config.json
   - docker-compose.web-flysystem.yaml
 
 post_install_actions:
