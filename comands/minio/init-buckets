@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+## Description: Initializes buckets for drupal
+## Usage: init-buckets
+
+bucket=minio/flysystem
+
+if mc ls $bucket; then
+  mc rm --recursive --force $bucket
+  mc rb $bucket
+fi
+mc mb $bucket
+

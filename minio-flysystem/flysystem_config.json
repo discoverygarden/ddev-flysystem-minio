@@ -1,0 +1,52 @@
+{
+  "repo-bin": {
+    "driver": "dgi_s3",
+    "config": {
+      "key": "ddevminio",
+      "secret": "ddevminio",
+      "bucket": "flysystem",
+      "public": false,
+      "region": "us-east-1",
+      "prefix": "repo-bin",
+      "endpoint": "http://minio:10101",
+      "use_path_style_endpoint": true
+    },
+    "cache": true
+  },
+  "repo-meta": {
+    "driver": "dgi_local",
+    "config": {
+      "root": "/opt/islandora_data/repo-meta"
+    },
+    "replicate": "repo-meta-remote",
+    "cache": false
+  },
+  "repo-meta-remote": {
+    "driver": "dgi_s3",
+    "config": {
+      "key": "ddevminio",
+      "secret": "ddevminio",
+      "bucket": "flysystem",
+      "public": false,
+      "region": "us-east-1",
+      "prefix": "repo-meta",
+      "endpoint": "http://minio:10101",
+      "use_path_style_endpoint": true
+    },
+    "cache": true
+  },
+  "repo-service": {
+    "driver": "dgi_s3",
+    "config": {
+      "key": "ddevminio",
+      "secret": "ddevminio",
+      "bucket": "flysystem",
+      "public": false,
+      "region": "us-east-1",
+      "prefix": "repo-service",
+      "endpoint": "http://minio:10101",
+      "use_path_style_endpoint": true
+    },
+    "cache": true
+  }
+}

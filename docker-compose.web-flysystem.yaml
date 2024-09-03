@@ -1,0 +1,7 @@
+services:
+  web:
+    environment:
+      FLYSYSTEM_CONFIG_FILE: /config/flysystem_config.json
+    volumes:
+      - ./minio-flysystem/flysystem_config.json:/config/flysystem_config.json:ro
+
