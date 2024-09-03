@@ -16,4 +16,3 @@ post_install_actions:
 removal_actions:
   - |
     sed -ni '/ddev init-buckets/!p' commands/host/full-install
-    rm commands/host/full-install.bak
