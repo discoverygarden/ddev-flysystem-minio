@@ -1,4 +1,4 @@
-# ddev-generated
+#ddev-generated
 hooks:
   post-start:
     - exec-host: "ddev create-buckets"
