@@ -6,6 +6,8 @@ on:
       - main
 jobs:
   release:
+    permissions:
+      contents: write
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
@@ -18,3 +20,5 @@ jobs:
           prefix: v
       - name: Release
         run: gh release create ${{ steps.semver.outputs.tag }}
+        env:
+          GH_TOKEN: ${{ github.token }}
