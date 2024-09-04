@@ -1,0 +1,17 @@
+---
+name: Enforce Labeling
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Pull Request Labels
+        uses: discoverygarden/enforce-label@v1
+        with:
+          required_labels: major,minor,patch,no-update
