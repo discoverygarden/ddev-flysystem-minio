@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+## Description: Creates buckets for drupal
+## Usage: create-buckets [-f]
+## Flags: [{"Usage": "recreates the buckets", "Shorthand": "f"}]
+#ddev-generated
+
+force=false
+while getopts "f" flag; do
+ case $flag in
+   f) # Handle the -f flag with an argument
+   force=true
+   # Process the specified file
+   ;;
+   \?)
+   echo Invalid arguments
+   exit 1
+   ;;
+ esac
+done
+
+bucket=minio/flysystem
+
+bucket-exits() {
+  if mc ls $bucket &> /dev/null; then
+    echo "The bucket $bucket already exists"
+  else
+    echo "The bucket $bucket does not exists"
+    return 1
+  fi
+}
+
+if [ "$force" = "true" ]; then
+  if bucket-exits; then
+    echo Deleting bucket $bucket
+    mc rm --recursive --force $bucket > /dev/null
+    mc rb $bucket > /dev/null
+  fi
+fi
+
+if ! bucket-exits; then
+  echo Creating bucket $bucket
+  mc mb $bucket > /dev/null
+fi
+

@@ -4,15 +4,7 @@ dependencies:
   - minio
 
 project_files:
-  - commands/minio/init-buckets
+  - commands/minio/create-buckets
   - minio-flysystem/flysystem_config.json
   - docker-compose.web-flysystem.yaml
-
-post_install_actions:
-  - |
-    if ! grep 'ddev init-buckets' commands/host/full-install; then
-      sed -i '/ddev start/a ddev init-buckets' commands/host/full-install 
-    fi
-removal_actions:
-  - |
-    sed -ni '/ddev init-buckets/!p' commands/host/full-install
+  - config.flysystem-minio.yaml
