@@ -19,6 +19,6 @@ jobs:
         with:
           prefix: v
       - name: Release
-        run: gh release create ${{ steps.semver.outputs.tag }}
+        run: gh release create --repo ${{ github.repository }} ${{ steps.semver.outputs.tag }}
         env:
           GH_TOKEN: ${{ github.token }}
