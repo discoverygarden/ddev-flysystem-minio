@@ -1,11 +1,11 @@
-name: Auto Semver
+name: Release
 on:
   pull_request_target:
     types: closed
     branches:
       - main
 jobs:
-  semver:
+  release:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
@@ -16,3 +16,5 @@ jobs:
         uses: discoverygarden/auto-semver@v1
         with:
           prefix: v
+      - name: Release
+        run: gh release create ${{ steps.semver.outputs.tag }}
