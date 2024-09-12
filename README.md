@@ -20,3 +20,11 @@ To access the minio console run `ddev minio` and login with `ddevminio` as both 
 | Command          | Usage                      | Description                                    |
 |------------------|----------------------------|------------------------------------------------|
 | `create-buckets` | `ddev create-buckets [-f]` | Creates the flysystem bucket. `-f` to recreate.|
+
+## Uninstall
+
+```bash
+ddev get --remove discoverygarden/ddev-flysystem-minio
+ddev get --remove ddev/ddev-minio
+ddev restart
+```
