@@ -5,6 +5,5 @@ dependencies:
 
 project_files:
   - commands/minio/create-buckets
-  - minio-flysystem/flysystem_config.json
   - docker-compose.web-flysystem.yaml
   - config.flysystem-minio.yaml
