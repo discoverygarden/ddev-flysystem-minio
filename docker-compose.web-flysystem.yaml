@@ -6,6 +6,9 @@ services:
     configs:
       - source: flysystem_config.json
         target: /config/flysystem_config.json
+        # XXX: Despite the default being described as `0444`, it seems to get
+        # `0440` if not set; so, set it.
+        mode: 0444
 configs:
   flysystem_config.json:
     content: |
