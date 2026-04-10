@@ -62,8 +62,7 @@ configs:
             "use_path_style_endpoint": true
           },
           "cache": true
-        }
-      },
+        },
         "repo-ingest": {
           "driver": "dgi_s3",
           "config": {
