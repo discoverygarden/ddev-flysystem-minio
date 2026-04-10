@@ -1,5 +1,9 @@
 name: flysystem-minio
 
+# ddev 1.22.5 bumped docker-composer to include docker-composer 2.23.1+, such
+# that inline config maps are usable.
+ddev_version_constraint: '>= v1.22.5'
+
 dependencies:
   - minio
 
