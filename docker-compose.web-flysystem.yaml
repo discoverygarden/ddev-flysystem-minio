@@ -63,4 +63,19 @@ configs:
           },
           "cache": true
         }
+      },
+        "repo-ingest": {
+          "driver": "dgi_s3",
+          "config": {
+            "key": "ddevminio",
+            "secret": "ddevminio",
+            "bucket": "flysystem",
+            "public": false,
+            "region": "us-east-1",
+            "prefix": "repo-ingest",
+            "endpoint": "$DDEV_PRIMARY_URL:10101",
+            "use_path_style_endpoint": true
+          },
+          "cache": true
+        }
       }
