@@ -3,6 +3,78 @@ services:
   web:
     environment:
       FLYSYSTEM_CONFIG_FILE: /config/flysystem_config.json
-    volumes:
-      - ./minio-flysystem/flysystem_config.json:/config/flysystem_config.json:ro
-
+    configs:
+      - source: flysystem_config.json
+        target: /config/flysystem_config.json
+        # XXX: Despite the default being described as `0444`, it seems to get
+        # `0440` if not set; so, set it.
+        mode: 0444
+configs:
+  flysystem_config.json:
+    content: |
+      {
+        "repo-bin": {
+          "driver": "dgi_s3",
+          "config": {
+            "key": "ddevminio",
+            "secret": "ddevminio",
+            "bucket": "flysystem",
+            "public": false,
+            "region": "us-east-1",
+            "prefix": "repo-bin",
+            "endpoint": "$DDEV_PRIMARY_URL:10101",
+            "use_path_style_endpoint": true
+          },
+          "cache": true
+        },
+        "repo-meta": {
+          "driver": "dgi_local",
+          "config": {
+            "root": "/opt/islandora_data/repo-meta"
+          },
+          "replicate": "repo-meta-remote",
+          "cache": false
+        },
+        "repo-meta-remote": {
+          "driver": "dgi_s3",
+          "config": {
+            "key": "ddevminio",
+            "secret": "ddevminio",
+            "bucket": "flysystem",
+            "public": false,
+            "region": "us-east-1",
+            "prefix": "repo-meta",
+            "endpoint": "$DDEV_PRIMARY_URL:10101",
+            "use_path_style_endpoint": true
+          },
+          "cache": true
+        },
+        "repo-service": {
+          "driver": "dgi_s3",
+          "config": {
+            "key": "ddevminio",
+            "secret": "ddevminio",
+            "bucket": "flysystem",
+            "public": false,
+            "region": "us-east-1",
+            "prefix": "repo-service",
+            "endpoint": "$DDEV_PRIMARY_URL:10101",
+            "use_path_style_endpoint": true
+          },
+          "cache": true
+        },
+        "repo-ingest": {
+          "driver": "dgi_s3",
+          "config": {
+            "key": "ddevminio",
+            "secret": "ddevminio",
+            "bucket": "flysystem",
+            "public": false,
+            "region": "us-east-1",
+            "prefix": "repo-ingest",
+            "endpoint": "$DDEV_PRIMARY_URL:10101",
+            "use_path_style_endpoint": true
+          },
+          "cache": true
+        }
+      }
