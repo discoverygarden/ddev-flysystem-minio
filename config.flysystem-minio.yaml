@@ -2,4 +2,4 @@
 hooks:
   post-start:
     - exec-host: "ddev create-buckets"
-    - exec-host: "timeout 300 ddev flysystem-minio-external-poll
+    - exec-host: "timeout 300 ddev flysystem-minio-external-poll"
