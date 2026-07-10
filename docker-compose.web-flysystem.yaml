@@ -9,6 +9,8 @@ services:
         # XXX: Despite the default being described as `0444`, it seems to get
         # `0440` if not set; so, set it.
         mode: 0444
+    depends_on:
+      - minio
 configs:
   flysystem_config.json:
     content: |
