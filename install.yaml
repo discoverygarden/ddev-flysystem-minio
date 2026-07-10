@@ -11,7 +11,6 @@ dependencies:
   - minio
 
 project_files:
-  - commands/host/flysystem-minio-external-poll
   - commands/minio/create-buckets
   - docker-compose.web-flysystem.yaml
   - config.flysystem-minio.yaml
