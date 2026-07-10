@@ -5,7 +5,7 @@ name: flysystem-minio
 #   that inline config maps are usable
 # - 1.24.10 facilitated inter-container comms
 # - 1.25.0 broke some of the inter-container comms (fixed in 1.25.1)
-ddev_version_constraint: '>= v1.25.1'
+ddev_version_constraint: '>= v1.25.3'
 
 dependencies:
   - minio
